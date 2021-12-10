@@ -25,14 +25,12 @@ const getUser = (userId) => {
 io.on("connection", (socket) => {
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
-    console.log(users);
     io.emit("getUsers", users);
   });
 
   //#region send and get messages
 
   socket.on("sendMessage", ({ senderId, receiverId, text }) => {
-    console.log(receiverId);
     const user = getUser(receiverId);
     if (user) {
       io.to(user.socketId).emit("getMessage", {

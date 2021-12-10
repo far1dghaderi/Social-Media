@@ -14,7 +14,7 @@ export default function Rightbar({ user }) {
   const [followed, setFollowed] = useState(
     currentUser.followings.includes(user?.id)
   );
-
+  console.log(user);
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -41,8 +41,7 @@ export default function Rightbar({ user }) {
         dispatch({ type: "FOLLOW", payload: user._id });
       }
       setFollowed(!followed);
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   const HomeRightbar = () => {

@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   } catch (err) {}
 });
 
-//get conv of a user
+//get conversation of a user
 
 router.get("/:userId", async (req, res) => {
   try {
@@ -23,6 +23,19 @@ router.get("/:userId", async (req, res) => {
     res.status(200).json(conversation);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+//get conversation between two users
+
+router.get("/find/:firstUserId/:secondUserId", async (req, res) => {
+  try {
+    const conversation = await conversation.findOne({
+      members: { $all: [req.params.firstUserId, req.params.secondUserId] },
+    });
+    res.status(200).json(conversation);
+  } catch (err) {
+    console.log(err);
   }
 });
 
