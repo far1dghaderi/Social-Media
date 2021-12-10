@@ -1,8 +1,8 @@
 .message {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  max-width: 50%;
+  margin: 20px 1% 0 1%;
+  width: 100%;
   border-radius: 5px;
 }
 .message.own {
